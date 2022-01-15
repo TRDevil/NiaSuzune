@@ -29,7 +29,7 @@ class Config(object):
     URL = None
     SPAMWATCH_API = "UEYs6snrsr2aDrrgtiRAs_rIqCKBxCGj2QBtpYYGs5Elu3Gc_mQG_FjxPF9IUaJS"  
     SPAMWATCH_SUPPORT_CHAT = "@SpamWatchSupport"
-    BOT_ID = "2052309535"
+    BOT_ID = "5069939361"
     
     DRAGONS = get_user_list('elevated_users.json', 'sudos')
 
