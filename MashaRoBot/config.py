@@ -11,23 +11,23 @@ class Config(object):
     LOGGER = True
   
     TEMP_DOWNLOAD_DIRECTORY = 'None'
-    API_ID = FILL API ID
-    API_HASH = "FIL API HASH"
-    TOKEN = "BOT_TOKEN"
-    OWNER_ID = 1732814103  
-    OWNER_USERNAME = "theTelegrampro"
-    SUPPORT_CHAT = 'Thanimaisupport'
-    JOIN_LOGGER = -1001739802989
-    EVENT_LOGS = -1001739802989
+    API_ID = 7679848
+    API_HASH = "bf6275a102d4a661f7c2cc5883e893a2"
+    TOKEN = "5069939361:AAHO_n2qIkefFiH6eiPvETndL98-20cYcz8"
+    OWNER_ID = 5003025270  
+    OWNER_USERNAME = "DreamerNo1"
+    SUPPORT_CHAT = 'NovusSupport'
+    JOIN_LOGGER = -1001688865879
+    EVENT_LOGS = -1001688865879
 
     ALLOW_CHATS = "True"
-    SQLALCHEMY_DATABASE_URI = 'ELEPHAT OR HEROKU DB URL'  
+    SQLALCHEMY_DATABASE_URI = 'postgres://vexiumduordwiv:932904e2b886c88361267919865845ab3cceef77a0f786265b4395447af08a38@ec2-3-222-24-178.compute-1.amazonaws.com:5432/ddc6ipphmaequ3'  
     LOAD = []
     NO_LOAD = ['rss', 'cleaner', 'connection', 'math']
     WEBHOOK = None
     INFOPIC = True
     URL = None
-    SPAMWATCH_API = ""  
+    SPAMWATCH_API = "UEYs6snrsr2aDrrgtiRAs_rIqCKBxCGj2QBtpYYGs5Elu3Gc_mQG_FjxPF9IUaJS"  
     SPAMWATCH_SUPPORT_CHAT = "@SpamWatchSupport"
     BOT_ID = "2052309535"
     
