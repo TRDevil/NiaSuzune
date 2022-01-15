@@ -124,9 +124,11 @@ PM_PHOTO = (
       "https://telegra.ph/file/a2188d060cf13f116bef5.jpg",
 
 TEXXT = (
+      "*Hey* [{}](tg://settings/), *As you know I'm alive since:* `{}`", 
       "*Hey* [{}](tg://settings/), *I'm came for you from* `{}` \n*Do you Like me?*", 
       "*Hey* [{}](tg://settings/) *I'm here for you from* `{}`", 
       "*Hey* [{}](tg://settings/), *I'm alive From:* `{}`",
+      "*Yes Darling* [{}](tg://settings/), *I'm alive Since:* `{}`",
 )
 
 MIKU_N_IMG = (
