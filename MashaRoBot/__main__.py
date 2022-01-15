@@ -123,8 +123,6 @@ PM_PHOTO = (
       "https://telegra.ph/file/516a9d6395248a5f5ced7.jpg",
       "https://telegra.ph/file/a2188d060cf13f116bef5.jpg",
   
-TEXXT = ( "*Hey* [{}](tg://settings/), *As you know I'm alive since:* `{}`", "*Hey* [{}](tg://settings/), *I'm came for you from* `{}`" )
-
 MIKU_N_IMG = (
       "https://telegra.ph/file/516a9d6395248a5f5ced7.jpg",
       "https://telegra.ph/file/a2188d060cf13f116bef5.jpg",
@@ -249,7 +247,7 @@ def start(update: Update, context: CallbackContext):
     else:
         first_name = update.effective_user.first_name
         update.effective_message.reply_photo(
-                random.choice(MIKU_IMG), caption=random.choice(TEXXT).format(
+                random.choice(MIKU_IMG), caption= "<code>{} is Here For You❤\nI am Awake Since</code>: <code>{}</code>".format(
                 first_name,
                 uptime
             ),
