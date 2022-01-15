@@ -1,7 +1,6 @@
 import importlib
 import time
 import re
-import random
 from sys import argv
 from typing import Optional
 
@@ -114,19 +113,11 @@ HELP_STRINGS = """
     dispatcher.bot.first_name,""
     if not ALLOW_EXCL else "\nAll commands can either be used with / or !.\nKindly use ! for commands if / is not working\n")
 
-MIKU_IMG = (
-      "https://telegra.ph/file/a2188d060cf13f116bef5.jpg",
-      "https://telegra.ph/file/516a9d6395248a5f5ced7.jpg",
-)
+MIKU_IMG = "https://telegra.ph/file/a2188d060cf13f116bef5.jpg"
 
-PM_PHOTO = (
-      "https://telegra.ph/file/516a9d6395248a5f5ced7.jpg",
-      "https://telegra.ph/file/a2188d060cf13f116bef5.jpg",
+PM_PHOTO = "https://telegra.ph/file/516a9d6395248a5f5ced7.jpg"
   
-MIKU_N_IMG = (
-      "https://telegra.ph/file/516a9d6395248a5f5ced7.jpg",
-      "https://telegra.ph/file/a2188d060cf13f116bef5.jpg",
-
+MIKU_N_IMG = "https://telegra.ph/file/516a9d6395248a5f5ced7.jpg"
 )
 
 DONATE_STRING = """иσ ι иєє∂ ι ¢αи ℓινє ωιтнσυт αиу ∂σиαтισи, ѕтιℓℓ ιи ∂σиαтισи נυѕт נσιи συя [¢нαт](t.me/NovusSupport)"""
@@ -237,7 +228,7 @@ def start(update: Update, context: CallbackContext):
         else:
             first_name = update.effective_user.first_name
             update.effective_message.reply_photo(
-                random.choice(PM_PHOTO),
+                PM_PHOTO,
                 PM_START_TEXT.format(
                     escape_markdown(first_name),                     
                 reply_markup=InlineKeyboardMarkup(buttons),
@@ -247,7 +238,7 @@ def start(update: Update, context: CallbackContext):
     else:
         first_name = update.effective_user.first_name
         update.effective_message.reply_photo(
-                random.choice(MIKU_IMG), caption= "<code>{} is Here For You❤\nI am Awake Since</code>: <code>{}</code>".format(
+                MIKU_IMG, caption= "<code>{} is Here For You❤\nI am Awake Since</code>: <code>{}</code>".format(
                 first_name,
                 uptime
             ),
@@ -426,7 +417,7 @@ def get_help(update: Update, context: CallbackContext):
         if len(args) >= 2 and any(args[1].lower() == x for x in HELPABLE):
             module = args[1].lower()
             update.effective_message.reply_photo(
-            random.choice(MIKU_N_IMG), caption= f"ᴏʜ ᴅᴀʀʟɪɴɢ, ᴄʟɪᴄᴋ ᴛʜᴇ ʙᴜᴛᴛᴏɴ ʙᴇʟᴏᴡ ᴛᴏ ɢᴇᴛ ʜᴇʟᴘ ᴏғ {module.capitalize()}",
+            MIKU_N_IMG, caption= f"ᴏʜ ᴅᴀʀʟɪɴɢ, ᴄʟɪᴄᴋ ᴛʜᴇ ʙᴜᴛᴛᴏɴ ʙᴇʟᴏᴡ ᴛᴏ ɢᴇᴛ ʜᴇʟᴘ ᴏғ {module.capitalize()}",
                 reply_markup=InlineKeyboardMarkup([[
                     InlineKeyboardButton(
                         text="ᴄʟɪᴄᴋ ᴍᴇ",
@@ -436,7 +427,7 @@ def get_help(update: Update, context: CallbackContext):
             return
 
         update.effective_message.reply_photo(
-            random.choice(MIKU_N_IMG), caption= "ᴏʜ ᴅᴀʀʟɪɴɢ, ᴄʟɪᴄᴋ ᴛʜᴇ ʙᴜᴛᴛᴏɴ ʙᴇʟᴏᴡ ᴛᴏ ɢᴇᴛ ᴛʜᴇ ʟɪsᴛ ᴏғ ᴘᴏssɪʙʟᴇ ᴄᴏᴍᴍᴀɴᴅs.",
+            MIKU_N_IMG, caption= "ᴏʜ ᴅᴀʀʟɪɴɢ, ᴄʟɪᴄᴋ ᴛʜᴇ ʙᴜᴛᴛᴏɴ ʙᴇʟᴏᴡ ᴛᴏ ɢᴇᴛ ᴛʜᴇ ʟɪsᴛ ᴏғ ᴘᴏssɪʙʟᴇ ᴄᴏᴍᴍᴀɴᴅs.",
             reply_markup=InlineKeyboardMarkup(
                 [
                   [
@@ -581,7 +572,7 @@ def get_settings(update: Update, context: CallbackContext):
         if is_user_admin(chat, user.id):
             text = "ᴄʟɪᴄᴋ ʜᴇʀᴇ ᴛᴏ ɢᴇᴛ ᴛʜɪs ᴄʜᴀᴛ's sᴇᴛᴛɪɴɢs, ᴀs ᴡᴇʟʟ ᴀs ʏᴏᴜʀs."
             msg.reply_photo(
-                random.choice(MIKU_N_IMG), caption=text,
+                MIKU_N_IMG, caption=text,
                 reply_markup=InlineKeyboardMarkup([[
                     InlineKeyboardButton(
                         text="sᴇᴛᴛɪɴɢs",
