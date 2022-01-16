@@ -60,10 +60,9 @@ def get_readable_time(seconds: int) -> str:
 
 PM_START_TEXT = """ 
 **𝙷𝙴𝙻𝙻𝙾 {}**
-𝙼𝚈 𝙽𝙰𝙼𝙴 𝙸𝚂 [𝙽𝙸𝙰 𝚂𝚄𝚉𝚄𝙽𝙴](https://t.me/NiaSuzuneBot) 𝙰 𝚂𝙼𝙰𝚁𝚃 𝚁𝙾𝙱𝙾𝚃 𝚆𝙸𝚃𝙷
-𝙼𝙰𝙽𝚈 𝙰𝙼𝙰𝚉𝙸𝙽𝙶 𝙵𝙴𝙰𝚃𝚄𝚁𝙴𝚂. 𝙸 𝙲𝙰𝙽 𝙿𝚁𝙾𝚅𝙸𝙳𝙴 𝙹𝙾𝙺𝙴𝚂, 𝙲𝙷𝙰𝚃𝙱𝙾𝚃𝚂 𝙰𝙽𝙳 𝙼𝙾𝚁𝙴 𝚃𝙷𝙸𝙽𝙶𝚂
-𝚆𝙸𝙻𝙻 𝙱𝙴 𝙰𝙳𝙳𝙴𝙳 & 𝙷𝙴𝙻𝙿 𝙰𝙳𝙼𝙸𝙽𝚂 𝚃𝙾 𝙼𝙰𝙽𝙰𝙶𝙴 𝚈𝙾𝚄𝚁 𝙶𝚁𝙾𝚄𝙿𝚂 𝙰𝙽𝙳 𝚄 𝙲𝙰𝙽 𝚃𝙰𝙺𝙴 𝙴𝙽𝙾𝚄𝙶𝙷
-𝚁𝙴𝚂𝚃 𝙾𝚁 𝙲𝙾𝙽𝙲𝙴𝙽𝚃𝚁𝙰𝚃𝙴 𝙴𝚇𝙰𝙼𝚂/𝚂𝚃𝚄𝙳𝙸𝙴𝚂 [|](https://telegra.ph/file/8220e252b3321427b2fda.jpg) **𝙴𝙽𝙾𝚈 𝚈𝙾𝚄𝚁 𝙻𝙸𝙵𝙴 ☃️**
+[𝙼𝚈](https://telegra.ph/file/8220e252b3321427b2fda.jpg) 𝙽𝙰𝙼𝙴 𝙸𝚂 [𝙽𝙸𝙰 𝚂𝚄𝚉𝚄𝙽𝙴](https://t.me/NiaSuzuneBot) 𝙰 𝚂𝙼𝙰𝚁𝚃 𝚁𝙾𝙱𝙾𝚃 𝚆𝙸𝚃𝙷
+𝙼𝙰𝙽𝚈 𝙰𝙼𝙰𝚉𝙸𝙽𝙶 𝙵𝙴𝙰𝚃𝚄𝚁𝙴𝚂.𝙸 𝙲𝙰𝙽 𝙿𝚁𝙾𝚅𝙸𝙳𝙴 𝙼𝙾𝚁𝙴 𝚃𝙷𝙸𝙽𝙶𝚂 & 𝙷𝙴𝙻𝙿 𝙰𝙳𝙼𝙸𝙽𝚂 𝚃𝙾 𝙼𝙰𝙽𝙰𝙶𝙴
+𝚈𝙾𝚄𝚁 𝙶𝚁𝙾𝚄𝙿𝚂 **𝙴𝙽𝙾𝚈 𝚈𝙾𝚄𝚁 𝙻𝙸𝙵𝙴 ☃️**
 """
 buttons = [
     [
@@ -202,9 +201,7 @@ def start(update: Update, context: CallbackContext):
 
         else:
             first_name = update.effective_user.first_name
-            update.effective_message.reply_photo(
-                NIA_IMG,
-                PM_START_TEXT.format(
+                  PM_START_TEXT.format(
                     escape_markdown(first_name),
                     escape_markdown(uptime),
                     sql.num_users(),
