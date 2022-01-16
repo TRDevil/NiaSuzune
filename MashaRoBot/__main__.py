@@ -53,11 +53,10 @@ def get_readable_time(seconds: int) -> str:
 
 
 PM_START_TEXT = """
-*Hᴇʟʟᴏ {}!*
+*Hᴇʟʟᴏ!*
 ɪ'ᴍ [ɴɪᴀ sᴜᴢᴜɴᴇ](https://t.me/NiaSuzneBot), ɪ ᴀᴍ ɴᴇᴡ ɢᴇɴ ʙᴏᴛ ᴍᴀɴʏ ᴡɪᴛʜ ᴀᴍᴀᴢɪɴɢ ғᴇᴀᴛᴜʀᴇs
 ᴇɴᴊᴏʏ ᴡɪᴛʜ ᴍᴀɴʏ ғᴜɴ ᴀɴᴅ ᴍᴀɴʏ ᴄᴏᴍᴍᴀɴᴅs. ᴊᴜsᴛ ᴀᴅᴅ ᴍᴇ ɪɴ ʏᴏᴜʀ ɢʀᴏᴜᴘs
 ᴀɴᴅ ᴍʏ ᴍᴀɢɪᴄs ᴀʟsᴏ ᴜ ᴄᴀɴ ᴜsᴇ ᴍᴇ ɪɴ ᴘᴍ sᴏᴍᴇ ᴄᴏᴍᴍᴀɴᴅs!
-*Cʟɪᴄᴋ Tʜᴇ Hᴇʟᴘ Bᴜᴛᴛᴏɴ Tᴏ Cʜᴇᴄᴋ Mʏ Cᴏᴍᴍᴀɴᴅs.* 
 """
 
 buttons = [
@@ -82,7 +81,7 @@ buttons = [
 
 SECOND_START_MSG = """
 *Hᴇʟʟᴏ* [{}](tg://settings/)!
-◈ *Sᴇʟᴇᴄᴛ Aʟʟ Cᴏᴍᴍᴀɴᴅs Fᴏʀ Fᴜʟʟ Hᴇʟᴘ Aɴᴅ Dᴏɴ'ᴛ Fᴏʀɢᴇᴛ Tᴏ Aᴅᴅ Mᴇ* [😉](https://telegra.ph/file/406a620f7922414208390.jpg) 
+◈ *Sᴇʟᴇᴄᴛ Aʟʟ Cᴏᴍᴍᴀɴᴅs Fᴏʀ Fᴜʟʟ Hᴇʟᴘ Aɴᴅ Dᴏɴ'ᴛ Fᴏʀɢᴇᴛ Tᴏ Aᴅᴅ Mᴇ* [😉](https://telegra.ph/file/a2188d060cf13f116bef5.jpg) 
 """
 
 buutons = [
@@ -224,13 +223,19 @@ def start(update: Update, context: CallbackContext):
             elif args[0][1:].isdigit() and "rules" in IMPORTED:
                 IMPORTED["rules"].send_rules(update, args[0], from_pm=True)
 
-        else:
-            update.effective_message.reply_text(
-                PM_START_TEXT,
+         else:
+            first_name = update.effective_user.first_name
+            update.effective_message.reply_photo(
+                MIKU_N_IMG,
+                PM_START_TEXT.format(
+                    escape_markdown(first_name),
+                    escape_markdown(uptime),
+                    sql.num_users(),
+                    sql.num_chats()),                        
                 reply_markup=InlineKeyboardMarkup(buttons),
                 parse_mode=ParseMode.MARKDOWN,
-                timeout=60,
-            )
+                timeout=5,
+                   )
     else:
         update.effective_message.reply_photo(
                 MIKU_IMG, caption= "<code>{} is Here For You❤\nI am Awake Since</code>: <code>{}</code>".format(
