@@ -636,7 +636,7 @@ def main():
 
     if SUPPORT_CHAT is not None and isinstance(SUPPORT_CHAT, str):
         try:
-            dispatcher.bot.send_photo(f"@{SUPPORT_CHAT}", SELENX_IMG, caption="*NɪᴀSᴜᴢᴜɴᴇ sᴛᴀʀᴛᴇᴅ! ᴡᴏʀᴋɪɴɢ ғɪɴᴇ ғᴏʀ sᴛᴀᴛᴜs, ᴄʟɪᴄᴋ /start ᴀɴᴅ /help ғᴏʀ ᴍᴏʀᴇ ɪɴғᴏ.*", parse_mode=ParseMode.MARKDOWN,
+            dispatcher.bot.send_photo(f"@{SUPPORT_CHAT}", MIKU_N_IMG, caption="*NɪᴀSᴜᴢᴜɴᴇ sᴛᴀʀᴛᴇᴅ! ᴡᴏʀᴋɪɴɢ ғɪɴᴇ ғᴏʀ sᴛᴀᴛᴜs, ᴄʟɪᴄᴋ /start ᴀɴᴅ /help ғᴏʀ ᴍᴏʀᴇ ɪɴғᴏ.*", parse_mode=ParseMode.MARKDOWN,
             reply_markup=InlineKeyboardMarkup(
                 [
                   [                  
