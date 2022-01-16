@@ -58,7 +58,6 @@ def get_readable_time(seconds: int) -> str:
 
     return ping_time
 
-
 PM_START_TEXT = """ 
 **𝙷𝙴𝙻𝙻𝙾 {}**
 𝙼𝚈 𝙽𝙰𝙼𝙴 𝙸𝚂 [𝙽𝙸𝙰 𝚂𝚄𝚉𝚄𝙽𝙴](https://t.me/NiaSuzuneBot) 𝙰 𝚂𝙼𝙰𝚁𝚃 𝚁𝙾𝙱𝙾𝚃 𝚆𝙸𝚃𝙷
