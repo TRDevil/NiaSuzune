@@ -93,6 +93,8 @@ All commands can either be used with / OR !."""
 
 START_IMG = "https://telegra.ph/file/91d3a167481da71ab5b44.mp4"
 MASHA_IMG = "https://telegra.ph/file/7aba4b67279c844454b4c.jpg"
+NIA_IMG = "https://telegra.ph/file/8220e252b3321427b2fda.jpg"
+
 
 DONATE_STRING = """Heya, glad to hear you want to donate!
  You can support the project via [Paypal](ko-fi.com/sawada) or by contacting @Sawada \
@@ -199,9 +201,12 @@ def start(update: Update, context: CallbackContext):
                 IMPORTED["rules"].send_rules(update, args[0], from_pm=True)
 
         else:
-            update.effective_message.reply_text(
+            first_name = update.effective_user.first_name
+            update.effective_message.reply_photo(
+                NIA_IMG,
                 PM_START_TEXT.format(
-                    
+                    escape_markdown(first_name),
+                    escape_markdown(uptime),
                     sql.num_users(),
                     sql.num_chats()),                        
                 reply_markup=InlineKeyboardMarkup(buttons),
@@ -391,14 +396,15 @@ def Source_about_callback(update, context):
     if query.data == "source_":
         query.message.edit_text(
 text="""
+────「𝙰𝙱𝙾𝚄𝚃 𝙼𝙴 💝」────
 ➲ 𝙼𝚈 𝙽𝙰𝙼𝙴: `𝙽𝙸𝙰 𝚂𝚄𝚉𝚄𝙽𝙴`
 ➲ 𝙲𝚁𝙴𝙰𝚃𝙾𝚁: `𝚃𝙷𝙴 𝙻𝙴𝙶𝙴𝙽𝙳 𝙳𝙲`
 ➲ 𝙻𝙰𝙽𝙶𝚄𝙰𝙶𝙴: `𝙿𝚈𝚃𝙷𝙾𝙽 𝟹`
 ➲ 𝙳𝙰𝚃𝙰𝙱𝙰𝚂𝙴: `𝙼𝙾𝙽𝙶𝙾 𝙳𝙱`
 ➲ 𝙱𝙾𝚃 𝚂𝙴𝚁𝚅𝙴𝚁: `𝚁𝙰𝙸𝙻𝚆𝙰𝚈`
 ➲ 𝚂𝚀𝙻 𝙳𝙰𝚃𝙰𝙱𝙰𝚂𝙴: `𝙴𝙻𝙴𝙿𝙷𝙰𝙽𝚃 𝚂𝚀𝙻`
-➲ 𝙱𝚄𝙸𝙻𝙳 𝚂𝚃𝙰𝚃𝚄𝚂: [`v1.0`][ `𝙽𝙾𝚁𝙼𝙰𝙻` ]
-➲ 𝙽𝙴𝚃𝚆𝙾𝚁𝙺 : [`𝚃𝙷𝙴 𝙽𝙾𝚅𝚄𝚂`]
+➲ 𝙱𝚄𝙸𝙻𝙳 𝚂𝚃𝙰𝚃𝚄𝚂: `v1.0` `[𝙽𝙾𝚁𝙼𝙰𝙻]`
+➲ 𝙽𝙴𝚃𝚆𝙾𝚁𝙺 : `𝚃𝙷𝙴 𝙽𝙾𝚅𝚄𝚂`
                  """,
             parse_mode=ParseMode.MARKDOWN,
             disable_web_page_preview=True,
