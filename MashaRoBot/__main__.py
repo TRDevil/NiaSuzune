@@ -225,17 +225,14 @@ def start(update: Update, context: CallbackContext):
                 IMPORTED["rules"].send_rules(update, args[0], from_pm=True)
 
         else:
-            first_name = update.effective_user.first_name
-            update.effective_message.reply_photo(
-                PM_PHOTO,
-                PM_START_TEXT.format(
-                    escape_markdown(first_name),                     
+            update.effective_message.reply_text(
+                PM_START_TEXT,
+                first_name = update.effective_user.first_name
                 reply_markup=InlineKeyboardMarkup(buttons),
                 parse_mode=ParseMode.MARKDOWN,
                 timeout=60,
             )
-              
-         first_name = update.effective_user.first_name
+    else:
         update.effective_message.reply_photo(
                 MIKU_IMG, caption= "<code>{} is Here For You❤\nI am Awake Since</code>: <code>{}</code>".format(
                 first_name,
