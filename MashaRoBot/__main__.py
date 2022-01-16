@@ -228,10 +228,6 @@ def start(update: Update, context: CallbackContext):
             update.effective_message.reply_photo(
                 MIKU_N_IMG,
                 PM_START_TEXT.format(
-                    escape_markdown(first_name),
-                    escape_markdown(uptime),
-                    sql.num_users(),
-                    sql.num_chats()),                        
                 reply_markup=InlineKeyboardMarkup(buttons),
                 parse_mode=ParseMode.MARKDOWN,
                 timeout=5,
