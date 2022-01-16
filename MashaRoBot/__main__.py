@@ -396,7 +396,7 @@ def Masha_about_callback(update, context):
 def Source_about_callback(update, context):
     query = update.callback_query
     if query.data == "source_":
-    CallbackQuery.edit_message_caption="""
+    callbackQuery.edit_message_caption="""
 ────「𝙰𝙱𝙾𝚄𝚃 𝙼𝙴 💝」────
 ➲ 𝙼𝚈 𝙽𝙰𝙼𝙴: `𝙽𝙸𝙰 𝚂𝚄𝚉𝚄𝙽𝙴`
 ➲ 𝙲𝚁𝙴𝙰𝚃𝙾𝚁: `𝚃𝙷𝙴 𝙻𝙴𝙶𝙴𝙽𝙳 𝙳𝙲`
