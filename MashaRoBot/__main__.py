@@ -478,14 +478,14 @@ def Source_about_callback(update, context):
     query = update.callback_query
     if query.data == "source_":
         query.message.edit_text(
-            text="""➲ 𝙼𝚈 𝙽𝙰𝙼𝙴: [𝙽𝙸𝙰 𝚂𝚄𝚉𝚄𝙽𝙴](https://t.me/NiaSuzuneBot)*
-                  /n➲ 𝙲𝚁𝙴𝙰𝚃𝙾𝚁: [𝚃𝙷𝙴 𝙻𝙴𝙶𝙴𝙽𝙳](https://t.me/TRCrazy)
-                  /n➲ 𝙻𝙰𝙽𝙶𝚄𝙰𝙶𝙴: [𝙿𝚈𝚃𝙷𝙾𝙽 𝟹](https://www.python.org/)
-                  /n➲ 𝙳𝙰𝚃𝙰𝙱𝙰𝚂𝙴: [𝙼𝙾𝙽𝙶𝙾 𝙳𝙱](https://cloud.mongodb.com/)
-                  /n➲ 𝙱𝙾𝚃 𝚂𝙴𝚁𝚅𝙴𝚁: [𝚁𝙰𝙸𝙻𝚆𝙰𝚈](https://railway.app/)
-                  /n➲ 𝚂𝚀𝙻 𝙳𝙰𝚃𝙰𝙱𝙰𝚂𝙴: [𝙴𝙻𝙴𝙿𝙷𝙰𝙽𝚃 𝚂𝚀𝙻](https://www.elephantsql.com/)
-                  /n➲ 𝙱𝚄𝙸𝙻𝙳 𝚂𝚃𝙰𝚃𝚄𝚂: [v1.0](https://t.me/NovusSupport)[ 𝙽𝙾𝚁𝙼𝙰𝙻 ]
-                  /n➲ 𝙽𝙴𝚃𝚆𝙾𝚁𝙺 : [𝚃𝙷𝙴 𝙽𝙾𝚅𝚄𝚂]((https://t.me/NovusUpdates)""",
+            text="""➲ 𝙼𝚈 𝙽𝙰𝙼𝙴: [𝙽𝙸𝙰 𝚂𝚄𝚉𝚄𝙽𝙴]
+                  /n➲ 𝙲𝚁𝙴𝙰𝚃𝙾𝚁: [𝚃𝙷𝙴 𝙻𝙴𝙶𝙴𝙽𝙳]
+                  /n➲ 𝙻𝙰𝙽𝙶𝚄𝙰𝙶𝙴: [𝙿𝚈𝚃𝙷𝙾𝙽 𝟹]
+                  /n➲ 𝙳𝙰𝚃𝙰𝙱𝙰𝚂𝙴: [𝙼𝙾𝙽𝙶𝙾 𝙳𝙱]
+                  /n➲ 𝙱𝙾𝚃 𝚂𝙴𝚁𝚅𝙴𝚁: [𝚁𝙰𝙸𝙻𝚆𝙰𝚈]
+                  /n➲ 𝚂𝚀𝙻 𝙳𝙰𝚃𝙰𝙱𝙰𝚂𝙴: [𝙴𝙻𝙴𝙿𝙷𝙰𝙽𝚃 𝚂𝚀𝙻]
+                  /n➲ 𝙱𝚄𝙸𝙻𝙳 𝚂𝚃𝙰𝚃𝚄𝚂: [v1.0] [ 𝙽𝙾𝚁𝙼𝙰𝙻 ]
+                  /n➲ 𝙽𝙴𝚃𝚆𝙾𝚁𝙺 : [𝚃𝙷𝙴 𝙽𝙾𝚅𝚄𝚂]""",
             parse_mode=ParseMode.MARKDOWN,
             disable_web_page_preview=True,
             reply_markup=InlineKeyboardMarkup(
