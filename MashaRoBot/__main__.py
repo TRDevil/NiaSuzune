@@ -58,9 +58,14 @@ def get_readable_time(seconds: int) -> str:
 
     return ping_time
 
+OK_IMG = (
+      "https://telegra.ph/file/ae612202d9adb35146b1a.jpg",
+      "https://telegra.ph/file/8220e252b3321427b2fda.jpg",
+)
+
 PM_START_TEXT = """ 
 **𝙷𝙴𝙻𝙻𝙾 {}**
-[𝙼𝚈](https://telegra.ph/file/8220e252b3321427b2fda.jpg) 𝙽𝙰𝙼𝙴 𝙸𝚂 [𝙽𝙸𝙰 𝚂𝚄𝚉𝚄𝙽𝙴](https://t.me/NiaSuzuneBot) 𝙰 𝚂𝙼𝙰𝚁𝚃 𝚁𝙾𝙱𝙾𝚃 𝚆𝙸𝚃𝙷
+𝙼𝚈  𝙽𝙰𝙼𝙴 𝙸𝚂 [𝙽𝙸𝙰 𝚂𝚄𝚉𝚄𝙽𝙴](https://t.me/NiaSuzuneBot) 𝙰 𝚂𝙼𝙰𝚁𝚃 𝚁𝙾𝙱𝙾𝚃 𝚆𝙸𝚃𝙷
 𝙼𝙰𝙽𝚈 𝙰𝙼𝙰𝚉𝙸𝙽𝙶 𝙵𝙴𝙰𝚃𝚄𝚁𝙴𝚂.𝙸 𝙲𝙰𝙽 𝙿𝚁𝙾𝚅𝙸𝙳𝙴 𝙼𝙾𝚁𝙴 𝚃𝙷𝙸𝙽𝙶𝚂 & 𝙷𝙴𝙻𝙿 𝙰𝙳𝙼𝙸𝙽𝚂 𝚃𝙾 𝙼𝙰𝙽𝙰𝙶𝙴
 𝚈𝙾𝚄𝚁 𝙶𝚁𝙾𝚄𝙿𝚂 **𝙴𝙽𝙾𝚈 𝚈𝙾𝚄𝚁 𝙻𝙸𝙵𝙴 ☃️**
 """
@@ -200,10 +205,9 @@ def start(update: Update, context: CallbackContext):
                 IMPORTED["rules"].send_rules(update, args[0], from_pm=True)
 
         else:
-            first_name = update.effective_user.first_name
-                  PM_START_TEXT.format(
-                    escape_markdown(first_name),
-                    escape_markdown(uptime),
+            update.effective_message.reply_photo(
+                random.choice(OK_IMG),
+                PM_START_TEXT.format(
                     sql.num_users(),
                     sql.num_chats()),                        
                 reply_markup=InlineKeyboardMarkup(buttons),
