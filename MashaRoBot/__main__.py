@@ -636,12 +636,12 @@ def main():
 
     if SUPPORT_CHAT is not None and isinstance(SUPPORT_CHAT, str):
         try:
-            dispatcher.bot.send_photo(f"@{SUPPORT_CHAT}", MIKU_N_IMG, caption="*NɪᴀSᴜᴢᴜɴᴇ sᴛᴀʀᴛᴇᴅ! ᴡᴏʀᴋɪɴɢ ғɪɴᴇ ғᴏʀ sᴛᴀᴛᴜs, ᴄʟɪᴄᴋ /start ᴀɴᴅ /help ғᴏʀ ᴍᴏʀᴇ ɪɴғᴏ.*", parse_mode=ParseMode.MARKDOWN,
+            dispatcher.bot.send_photo(f"@{SUPPORT_CHAT}", MIKU_IMG, caption="*NɪᴀSᴜᴢᴜɴᴇ Started! Working Fine For Status, Click /start And /help For More Info.*", parse_mode=ParseMode.MARKDOWN,
             reply_markup=InlineKeyboardMarkup(
                 [
                   [                  
                        InlineKeyboardButton(
-                             text="[► sᴜᴍᴍᴏɴ ᴍᴇ ◄]",
+                             text="[► Summon Me ◄]",
                              url="https://t.me/NiaSuzuneBot?startgroup=true")
                      ] 
                 ]
