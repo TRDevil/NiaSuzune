@@ -60,34 +60,25 @@ def get_readable_time(seconds: int) -> str:
 
 
 PM_START_TEXT = """ 
-𝕙𝕖𝕪  𝕥𝕙𝕖𝕣𝕖!.
-telegram Group management with lots of features.
-───────────────────────
-× Uptime: 8days, 10h:36m:16s
-×  `{}` users, across `{}` chats..
-───────────────────────
-✪ Bot For help You Manage & Protect Your Groups.
-➼ So What U Waiting For Add Me To Ur chat
-───────────────────────
+**𝙷𝙴𝙻𝙻𝙾 {}**
+𝙼𝚈 𝙽𝙰𝙼𝙴 𝙸𝚂 [𝙽𝙸𝙰 𝚂𝚄𝚉𝚄𝙽𝙴](https://t.me/NiaSuzuneBot) 𝙰 𝚂𝙼𝙰𝚁𝚃 𝚁𝙾𝙱𝙾𝚃 𝚆𝙸𝚃𝙷
+𝙼𝙰𝙽𝚈 𝙰𝙼𝙰𝚉𝙸𝙽𝙶 𝙵𝙴𝙰𝚃𝚄𝚁𝙴𝚂. 𝙸 𝙲𝙰𝙽 𝙿𝚁𝙾𝚅𝙸𝙳𝙴 𝙹𝙾𝙺𝙴𝚂, 𝙲𝙷𝙰𝚃𝙱𝙾𝚃𝚂 𝙰𝙽𝙳 𝙼𝙾𝚁𝙴 𝚃𝙷𝙸𝙽𝙶𝚂
+𝚆𝙸𝙻𝙻 𝙱𝙴 𝙰𝙳𝙳𝙴𝙳 & 𝙷𝙴𝙻𝙿 𝙰𝙳𝙼𝙸𝙽𝚂 𝚃𝙾 𝙼𝙰𝙽𝙰𝙶𝙴 𝚈𝙾𝚄𝚁 𝙶𝚁𝙾𝚄𝙿𝚂 𝙰𝙽𝙳 𝚄 𝙲𝙰𝙽 𝚃𝙰𝙺𝙴 𝙴𝙽𝙾𝚄𝙶𝙷
+𝚁𝙴𝚂𝚃 𝙾𝚁 𝙲𝙾𝙽𝙲𝙴𝙽𝚃𝚁𝙰𝚃𝙴 𝙴𝚇𝙰𝙼𝚂/𝚂𝚃𝚄𝙳𝙸𝙴𝚂 [|](https://telegra.ph/file/8220e252b3321427b2fda.jpg) **𝙴𝙽𝙾𝚈 𝚈𝙾𝚄𝚁 𝙻𝙸𝙵𝙴 ☃️**
 """
 buttons = [
     [
         InlineKeyboardButton(
-            text="Aᴅᴅ Mᴇ 🥰", url="t.me/FINAL_STRIKER_BOT?startgroup=true"),
+            text="ᴀᴅᴅ ᴍᴇ ᴛᴏ ʏᴏᴜʀ ɢʀᴏᴜᴘs", url="t.me/NiaSuzuneBot?startgroup=true"),
     ],
     [
-        InlineKeyboardButton(text="Cᴏᴍᴍᴀɴᴅs ❔", callback_data="help_back"),
+        InlineKeyboardButton(text="ᴜᴘᴅᴀᴛᴇs", url="https://t.me/NovusUpdates"),
+        InlineKeyboardButton(text="sᴜᴘᴘᴏʀᴛ", url="https://t.me/NovusSupport"),
+
     ],
     [
-        InlineKeyboardButton(text="Dᴇᴠʟᴏᴘᴇʀ🤓", url="https://t.me/TheTelegrampro"),
-    ],
-    [
-        InlineKeyboardButton(text="❤️𝕭𝖔𝖙 𝖀𝖕𝖉𝖆𝖙𝖊$💙", url="t.me/Thanimaibots"),
-        InlineKeyboardButton(text="✨ 𝐒𝐮𝐩𝐩𝐨𝐫𝐭✨", url="t.me/Thanimaisupport"),
-    ],
-    [
-        InlineKeyboardButton(text="⚠️𝗦𝗼𝘂𝗿𝗰𝗲⚠️🖥️", callback_data="source_"
-        ),
+        InlineKeyboardButton(text="ʜᴇʟᴘ", callback_data="help_back"),
+        InlineKeyboardButton(text="ᴀʙᴏᴜᴛ ᴍᴇ", callback_data="source_"),
     ],
 ]
 
@@ -400,14 +391,21 @@ def Source_about_callback(update, context):
     query = update.callback_query
     if query.data == "source_":
         query.message.edit_text(
-            text=""" Hi..🤗 I'm *Lonely king*
-                 \nMy source code is private  [support](t.me/thanimaisupport) .""",
+            text="""➲ 𝙼𝚈 𝙽𝙰𝙼𝙴: [𝙽𝙸𝙰 𝚂𝚄𝚉𝚄𝙽𝙴](https://t.me/NiaSuzuneBot)*
+                  /n➲ 𝙲𝚁𝙴𝙰𝚃𝙾𝚁: [𝚃𝙷𝙴 𝙻𝙴𝙶𝙴𝙽𝙳](https://t.me/TRCrazy)
+                  /n➲ 𝙻𝙰𝙽𝙶𝚄𝙰𝙶𝙴: [𝙿𝚈𝚃𝙷𝙾𝙽 𝟹](https://www.python.org/)
+                  /n➲ 𝙳𝙰𝚃𝙰𝙱𝙰𝚂𝙴: [𝙼𝙾𝙽𝙶𝙾 𝙳𝙱](https://cloud.mongodb.com/)
+                  /n➲ 𝙱𝙾𝚃 𝚂𝙴𝚁𝚅𝙴𝚁: [𝚁𝙰𝙸𝙻𝚆𝙰𝚈](https://railway.app/)
+                  /n➲ 𝚂𝚀𝙻 𝙳𝙰𝚃𝙰𝙱𝙰𝚂𝙴: [𝙴𝙻𝙴𝙿𝙷𝙰𝙽𝚃 𝚂𝚀𝙻](https://www.elephantsql.com/)
+                  /n➲ 𝙱𝚄𝙸𝙻𝙳 𝚂𝚃𝙰𝚃𝚄𝚂: [v1.0](https://t.me/NovusSupport)[ 𝙽𝙾𝚁𝙼𝙰𝙻 ]
+                  /n➲ 𝙽𝙴𝚃𝚆𝙾𝚁𝙺 : [𝚃𝙷𝙴 𝙽𝙾𝚅𝚄𝚂]((https://t.me/NovusUpdates)
+                 """,
             parse_mode=ParseMode.MARKDOWN,
             disable_web_page_preview=True,
             reply_markup=InlineKeyboardMarkup(
                 [
                  [
-                    InlineKeyboardButton(text="Go Back", callback_data="source_back")
+                    InlineKeyboardButton(text="ɢᴏ ʙᴀᴄᴋ", callback_data="source_back")
                  ]
                 ]
             ),
