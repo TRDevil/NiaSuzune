@@ -1,19 +1,34 @@
 import importlib
 import time
 import re
+import random
 from sys import argv
 from typing import Optional
-import MashaRoBot.modules.sql.users_sql as sql
-import MashaRoBot.modules.sql.users_sql as sql
-from MashaRoBot import (ALLOW_EXCL, CERT_PATH, DONATION_LINK, LOGGER,
-                          OWNER_ID, PORT, SUPPORT_CHAT, TOKEN, URL, WEBHOOK,
-                          SUPPORT_CHAT, dispatcher, StartTime, telethn, updater, pbot)
+from pyrogram import filters, idle
 
-# needed to dynamically load modules
-# NOTE: Module order is not guaranteed, specify that in the config file!
+from MashaRoBot import (
+    ALLOW_EXCL,
+    CERT_PATH,
+    DONATION_LINK,
+    LOGGER,
+    OWNER_ID,
+    PORT,
+    SUPPORT_CHAT,
+    TOKEN,
+    URL,
+    WEBHOOK,
+    SUPPORT_CHAT,
+    dispatcher,
+    StartTime,
+    telethn,
+    pbot,
+    updater,
+)
+
 from MashaRoBot.modules import ALL_MODULES
 from MashaRoBot.modules.helper_funcs.chat_status import is_user_admin
 from MashaRoBot.modules.helper_funcs.misc import paginate_modules
+from MashaRoBot.modules.sudoers import bot_sys_stats
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup, ParseMode, Update
 from telegram.error import (
     BadRequest,
@@ -58,14 +73,14 @@ def get_readable_time(seconds: int) -> str:
 
     return ping_time
 
-
 PM_START_TEXT = """ 
 **𝙷𝙴𝙻𝙻𝙾 {}**
 𝙼𝚈 𝙽𝙰𝙼𝙴 𝙸𝚂 [𝙽𝙸𝙰 𝚂𝚄𝚉𝚄𝙽𝙴](https://t.me/NiaSuzuneBot) 𝙰 𝚂𝙼𝙰𝚁𝚃 𝚁𝙾𝙱𝙾𝚃 𝚆𝙸𝚃𝙷
 𝙼𝙰𝙽𝚈 𝙰𝙼𝙰𝚉𝙸𝙽𝙶 𝙵𝙴𝙰𝚃𝚄𝚁𝙴𝚂. 𝙸 𝙲𝙰𝙽 𝙿𝚁𝙾𝚅𝙸𝙳𝙴 𝙹𝙾𝙺𝙴𝚂, 𝙲𝙷𝙰𝚃𝙱𝙾𝚃𝚂 𝙰𝙽𝙳 𝙼𝙾𝚁𝙴 𝚃𝙷𝙸𝙽𝙶𝚂
 𝚆𝙸𝙻𝙻 𝙱𝙴 𝙰𝙳𝙳𝙴𝙳 & 𝙷𝙴𝙻𝙿 𝙰𝙳𝙼𝙸𝙽𝚂 𝚃𝙾 𝙼𝙰𝙽𝙰𝙶𝙴 𝚈𝙾𝚄𝚁 𝙶𝚁𝙾𝚄𝙿𝚂 𝙰𝙽𝙳 𝚄 𝙲𝙰𝙽 𝚃𝙰𝙺𝙴 𝙴𝙽𝙾𝚄𝙶𝙷
-𝚁𝙴𝚂𝚃 𝙾𝚁 𝙲𝙾𝙽𝙲𝙴𝙽𝚃𝚁𝙰𝚃𝙴 𝙴𝚇𝙰𝙼𝚂/𝚂𝚃𝚄𝙳𝙸𝙴𝚂 [|](https://telegra.ph/file/8220e252b3321427b2fda.jpg) **𝙴𝙽𝙾𝚈 𝚈𝙾𝚄𝚁 𝙻𝙸𝙵𝙴 ☃️**
+𝚁𝙴𝚂𝚃 𝙾𝚁 𝙲𝙾𝙽𝙲𝙴𝙽𝚃𝚁𝙰𝚃𝙴 𝙴𝚇𝙰𝙼𝚂/𝚂𝚃𝚄𝙳𝙸𝙴𝚂|**𝙴𝙽𝙾𝚈 𝚈𝙾𝚄𝚁 𝙻𝙸𝙵𝙴 ☃️**
 """
+
 buttons = [
     [
         InlineKeyboardButton(
@@ -82,23 +97,11 @@ buttons = [
     ],
 ]
 
-
-
 HELP_STRINGS = """
-Hey There!
-I'm here to help you manage your groups!
-Commands available:
-× /start: Start the bot
-× /help: Give's you this message.
-All commands can either be used with / OR !."""
+Hi Boss! I'm <b>Nia Suzune</b>. An anime themed super powerful group management bot with many handy tools. So why are you waiting. Let me to assist you.
+"""
 
-START_IMG = "https://telegra.ph/file/91d3a167481da71ab5b44.mp4"
-MASHA_IMG = "https://telegra.ph/file/7aba4b67279c844454b4c.jpg"
-
-DONATE_STRING = """Heya, glad to hear you want to donate!
- You can support the project via [Paypal](ko-fi.com/sawada) or by contacting @Sawada \
- Supporting isnt always financial! \
- Those who cannot provide monetary support are welcome to help us develop the bot at @OnePunchDev."""
+DONATE_STRING = """ Join Updates Channel @NovusUpdates | Support Group @NovusSupport"""
 
 IMPORTED = {}
 MIGRATEABLE = []
@@ -201,31 +204,13 @@ def start(update: Update, context: CallbackContext):
 
         else:
             update.effective_message.reply_text(
-                PM_START_TEXT.format(
-                    
-                    sql.num_users(),
-                    sql.num_chats()),                        
+                PM_START_TEXT,
                 reply_markup=InlineKeyboardMarkup(buttons),
                 parse_mode=ParseMode.MARKDOWN,
                 timeout=60,
             )
     else:
-           update.effective_message.reply_video(
-            START_IMG, caption= "<code>I'm awake already!\nHaven't slept since</code>: <code>{}</code>".format(
-                uptime
-            ),
-            parse_mode=ParseMode.HTML,
-            reply_markup=InlineKeyboardMarkup(
-                [
-                  [
-                  InlineKeyboardButton(text="Sᴜᴘᴘᴏʀᴛ", url="https://t.me/thanimaisupport")
-                  ],
-                  [
-                  InlineKeyboardButton(text="Uᴘᴅᴀᴛᴇs", url="https://t.me/thanimaibots")
-                  ]
-                ]
-            ),
-        )
+        update.effective_message.reply_text("Heya, Sophia here :) PM me if you have any questions how to use me!")
 
 
 def error_handler(update, context):
@@ -352,40 +337,142 @@ def help_button(update, context):
 
 
 @run_async
-def Masha_about_callback(update, context):
+def sophia_about_callback(update, context):
     query = update.callback_query
-    if query.data == "masha_":
+    if query.data == "sophia_":
         query.message.edit_text(
-            text=""" ℹ️ I'm *MASHA*, a powerful group management bot built to help you manage your group easily.
-                 \n❍ I can restrict users.
-                 \n❍ I can greet users with customizable welcome messages and even set a group's rules.
-                 \n❍ I have an advanced anti-flood system.
-                 \n❍ I can warn users until they reach max warns, with each predefined actions such as ban, mute, kick, etc.
-                 \n❍ I have a note keeping system, blacklists, and even predetermined replies on certain keywords.
-                 \n❍ I check for admins' permissions before executing any command and more stuffs
-                 \n\n_Masha's licensed under the GNU General Public License v3.0_
-                 \nHere is the [💾Repository](https://github.com/Mr-Dark-Prince/MashaRoBot).
-                 \n\nIf you have any question about Masha, let us know at @WasteBots.""",
+            text=""" My name is *Sophia*, I have been written with Pyrogram and Telethon.. I'm online since 10 June 2021 and is constantly updated!
+*Bot Version: 3.0*
+\n*Bot Developers:*
+-  @dihanrandila
+-  @InukaASiTH
+\n* Updates Channel:* @SophiaUpdates
+* Support Chat:* @SophiaSupport_Official
+                 \n\n* And finally special thanks of gratitude to all my users who relied on me for managing their groups, I hope you will always like me; My developers are constantly working to improve me!
+                 \n\n *Licensed under the GNU Affero General Public Lisence v3.0*
+                 \n© 2020 - 2021 @SophiaSLBot. All Rights Reserved """,
             parse_mode=ParseMode.MARKDOWN,
             disable_web_page_preview=True,
             reply_markup=InlineKeyboardMarkup(
                 [
                  [
-                    InlineKeyboardButton(text="Back", callback_data="masha_back")
+                    InlineKeyboardButton(text="Back", callback_data="sophia_back")
                  ]
                 ]
             ),
         )
-    elif query.data == "masha_back":
+    elif query.data == "sophia_back":
         query.message.edit_text(
                 PM_START_TEXT,
                 reply_markup=InlineKeyboardMarkup(buttons),
                 parse_mode=ParseMode.MARKDOWN,
                 timeout=60,
-                disable_web_page_preview=True,
+                disable_web_page_preview=False,
+        )
+
+        
+
+    elif query.data == "sophia_basichelp":
+        query.message.edit_text(
+            text=f"*Here's basic Help regarding* *How to use Me?*"
+            f"\n\n• Firstly Add {dispatcher.bot.first_name} to your group by pressing [here](http://t.me/{dispatcher.bot.username}?startgroup=true)\n"
+            f"\n• After adding promote me manually with full rights for faster experience.\n"
+            f"\n• Than send `/admincache@SophiaSLBot` in that chat to refresh admin list in My database.\n"
+            f"\n\n*All done now use below given button's to know about use!*\n"
+            f"",
+            parse_mode=ParseMode.MARKDOWN,
+            disable_web_page_preview=True,
+            reply_markup=InlineKeyboardMarkup(
+                [
+                 [
+                    InlineKeyboardButton(text="Admins 👮‍♂️", callback_data="sophia_admin"),
+                    InlineKeyboardButton(text="Notes 📑", callback_data="sophia_notes"),
+                 ],
+                 [
+                    InlineKeyboardButton(text="Support 👨‍🔧", callback_data="sophia_support"),
+                    InlineKeyboardButton(text="Credits 👨‍💻", callback_data="sophia_credit"),
+                 ],
+                 [
+                    InlineKeyboardButton(text="Back", callback_data="source_"),
+                 
+                 ]
+                ]
+            ),
+        )
+
+    elif query.data == "sophia_admin":
+        query.message.edit_text(
+            text=f"*Let's make your group bit effective now*"
+            f"\nCongragulations, *Sophia* now ready to manage your group."
+            f"\n\n*Admin Tools*"
+            f"\nBasic Admin tools help you to protect and powerup your group."
+            f"\nYou can ban members, Kick members, Promote someone as admin through commands of bot."
+            f"\n\n*Welcome*"
+            f"\nLets set a welcome message to welcome new users coming to your group."
+            f"send `/setwelcome [message]` to set a welcome message!",
+            parse_mode=ParseMode.MARKDOWN,
+            disable_web_page_preview=True,
+            reply_markup=InlineKeyboardMarkup(
+                [[InlineKeyboardButton(text="Back", callback_data="sophia_basichelp")]]
+            ),
+        )
+
+    elif query.data == "sophia_notes":
+        query.message.edit_text(
+            text=f"<b> Setting up notes</b>"
+            f"\nYou can save message/media/audio or anything as notes"
+            f"\nto get a note simply use # at the beginning of a word"
+            f"\n\nYou can also set buttons for notes and filters (refer help menu)",
+            parse_mode=ParseMode.HTML,
+            reply_markup=InlineKeyboardMarkup(
+                [[InlineKeyboardButton(text="Back", callback_data="sophia_basichelp")]]
+            ),
+        )
+    elif query.data == "sophia_support":
+        query.message.edit_text(
+            text="* Sophia's Updates News & Supports*"
+            "\nJoin Support Group & Updates Channel",
+            parse_mode=ParseMode.MARKDOWN,
+            reply_markup=InlineKeyboardMarkup(
+                [
+                 [
+                    InlineKeyboardButton(text="Support Group", url="t.me/dihan_official"),
+                    InlineKeyboardButton(text="Updates Channel", url="t.me/dihanofficial"),
+                 ],
+                 [
+                    InlineKeyboardButton(text="Back", callback_data="sophia_basichelp"),
+                 
+                 ]
+                ]
+            ),
+        )
+    elif query.data == "sophia_credit":
+        query.message.edit_text(
+            text=f"*Credit For Sophia's Devs*\n"
+            f"\nHere Some Developers Helping in Making The Sophia Bot",
+            parse_mode=ParseMode.HTML,
+            reply_markup=InlineKeyboardMarkup(
+                [
+                 [
+                    InlineKeyboardButton(text="Dihan", url="t.me/dihanrandila"),
+                    InlineKeyboardButton(text="Inuka", url="t.me/InukaASiTH"),
+                 ],
+                 [
+                    InlineKeyboardButton(text="Back", callback_data="sophia_basichelp"),
+                 
+                 ]
+                ]
+            ),
         )
 
 
+ 
+@pbot.on_callback_query(filters.regex("stats_callback"))
+async def stats_callbacc(_, CallbackQuery):
+    text = await bot_sys_stats()
+    await pbot.answer_callback_query(CallbackQuery.id, text, show_alert=True)
+    
+    
 @run_async
 def Source_about_callback(update, context):
     query = update.callback_query
@@ -398,8 +485,7 @@ def Source_about_callback(update, context):
                   /n➲ 𝙱𝙾𝚃 𝚂𝙴𝚁𝚅𝙴𝚁: [𝚁𝙰𝙸𝙻𝚆𝙰𝚈](https://railway.app/)
                   /n➲ 𝚂𝚀𝙻 𝙳𝙰𝚃𝙰𝙱𝙰𝚂𝙴: [𝙴𝙻𝙴𝙿𝙷𝙰𝙽𝚃 𝚂𝚀𝙻](https://www.elephantsql.com/)
                   /n➲ 𝙱𝚄𝙸𝙻𝙳 𝚂𝚃𝙰𝚃𝚄𝚂: [v1.0](https://t.me/NovusSupport)[ 𝙽𝙾𝚁𝙼𝙰𝙻 ]
-                  /n➲ 𝙽𝙴𝚃𝚆𝙾𝚁𝙺 : [𝚃𝙷𝙴 𝙽𝙾𝚅𝚄𝚂]((https://t.me/NovusUpdates)
-                 """,
+                  /n➲ 𝙽𝙴𝚃𝚆𝙾𝚁𝙺 : [𝚃𝙷𝙴 𝙽𝙾𝚅𝚄𝚂]((https://t.me/NovusUpdates)""",
             parse_mode=ParseMode.MARKDOWN,
             disable_web_page_preview=True,
             reply_markup=InlineKeyboardMarkup(
@@ -410,14 +496,18 @@ def Source_about_callback(update, context):
                 ]
             ),
         )
+
     elif query.data == "source_back":
         query.message.edit_text(
                 PM_START_TEXT,
                 reply_markup=InlineKeyboardMarkup(buttons),
                 parse_mode=ParseMode.MARKDOWN,
                 timeout=60,
-                disable_web_page_preview=True,
+                disable_web_page_preview=False,
         )
+
+
+# Speacial creadit for me  dont edit 
 
 @run_async
 def get_help(update: Update, context: CallbackContext):
@@ -450,7 +540,7 @@ def get_help(update: Update, context: CallbackContext):
                 [
                     [
                         InlineKeyboardButton(
-                            text="Help",
+                            text="Click me for help!",
                             url="t.me/{}?start=help".format(context.bot.username),
                         )
                     ]
@@ -620,7 +710,7 @@ def get_settings(update: Update, context: CallbackContext):
                     [
                         [
                             InlineKeyboardButton(
-                                text="Settings",
+                                text="⚙ Settings ⚙",
                                 url="t.me/{}?start=stngs_{}".format(
                                     context.bot.username, chat.id
                                 ),
@@ -689,17 +779,18 @@ def migrate_chats(update: Update, context: CallbackContext):
     LOGGER.info("Successfully migrated!")
     raise DispatcherHandlerStop
 
+
 def main():
 
     if SUPPORT_CHAT is not None and isinstance(SUPPORT_CHAT, str):
         try:
-            dispatcher.bot.sendMessage(f"@{SUPPORT_CHAT}", "[Yes I am Back to online!](https://telegra.ph/file/9825bc2819bb7c78abe67.jpg)", parse_mode=ParseMode.MARKDOWN) 
+            dispatcher.bot.sendMessage(f"@{SUPPORT_CHAT}", "I'm Online Now! 💫 | Join my Group @SophiaSupport_Official ❤")
         except Unauthorized:
             LOGGER.warning(
-                "Bot isnt able to send message to support_chat, go and check!")
+                "Bot isnt able to send message to Support Group, go and check!.| Support Group @SophiaSupport_Official ❤"
+            )
         except BadRequest as e:
             LOGGER.warning(e.message)
-
 
     test_handler = CommandHandler("test", test)
     start_handler = CommandHandler("start", start)
@@ -710,7 +801,7 @@ def main():
     settings_handler = CommandHandler("settings", get_settings)
     settings_callback_handler = CallbackQueryHandler(settings_button, pattern=r"stngs_")
 
-    about_callback_handler = CallbackQueryHandler(Masha_about_callback, pattern=r"masha_")
+    about_callback_handler = CallbackQueryHandler(sophia_about_callback, pattern=r"sophia_")
     source_callback_handler = CallbackQueryHandler(Source_about_callback, pattern=r"source_")
 
     donate_handler = CommandHandler("donate", donate)
