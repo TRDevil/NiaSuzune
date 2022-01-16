@@ -58,7 +58,9 @@ PM_START_TEXT = """
 ᴇɴᴊᴏʏ ᴡɪᴛʜ ᴍᴀɴʏ ғᴜɴ ᴀɴᴅ ᴍᴀɴʏ ᴄᴏᴍᴍᴀɴᴅs. ᴊᴜsᴛ ᴀᴅᴅ ᴍᴇ ɪɴ ʏᴏᴜʀ ɢʀᴏᴜᴘs
 ᴀɴᴅ ᴍʏ ᴍᴀɢɪᴄs ᴀʟsᴏ ᴜ ᴄᴀɴ ᴜsᴇ ᴍᴇ ɪɴ ᴘᴍ sᴏᴍᴇ ᴄᴏᴍᴍᴀɴᴅs!
 *Cʟɪᴄᴋ Tʜᴇ Hᴇʟᴘ Bᴜᴛᴛᴏɴ Tᴏ Cʜᴇᴄᴋ Mʏ Cᴏᴍᴍᴀɴᴅs.* 
-"""
+"""format(
+         first_name,
+  ),
 
 buttons = [
     [
@@ -227,7 +229,6 @@ def start(update: Update, context: CallbackContext):
         else:
             update.effective_message.reply_text(
                 PM_START_TEXT,
-                first_name = update.effective_user.first_name
                 reply_markup=InlineKeyboardMarkup(buttons),
                 parse_mode=ParseMode.MARKDOWN,
                 timeout=60,
