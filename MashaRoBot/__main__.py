@@ -118,7 +118,6 @@ MIKU_IMG = "https://telegra.ph/file/a2188d060cf13f116bef5.jpg"
 PM_PHOTO = "https://telegra.ph/file/516a9d6395248a5f5ced7.jpg"
   
 MIKU_N_IMG = "https://telegra.ph/file/516a9d6395248a5f5ced7.jpg"
-)
 
 DONATE_STRING = """иσ ι иєє∂ ι ¢αи ℓινє ωιтнσυт αиу ∂σиαтισи, ѕтιℓℓ ιи ∂σиαтισи נυѕт נσιи συя [¢нαт](t.me/NovusSupport)"""
 
