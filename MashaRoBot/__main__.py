@@ -81,7 +81,7 @@ buttons = [
 
     ],
     [
-        InlineKeyboardButton(text="ʜᴇʟᴘ", callback_data="help_back"),
+        InlineKeyboardButton(text="ʜᴇʟᴘ", callback_data="masha_back"),
         InlineKeyboardButton(text="ᴀʙᴏᴜᴛ ᴍᴇ", callback_data="source_"),
     ],
 ]
