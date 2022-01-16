@@ -396,17 +396,17 @@ def Masha_about_callback(update, context):
 def Source_about_callback(update, context):
     query = update.callback_query
     if query.data == "source_":
-    callbackQuery.edit_message_caption="""
-────「𝙰𝙱𝙾𝚄𝚃 𝙼𝙴 💝」────
-➲ 𝙼𝚈 𝙽𝙰𝙼𝙴: `𝙽𝙸𝙰 𝚂𝚄𝚉𝚄𝙽𝙴`
-➲ 𝙲𝚁𝙴𝙰𝚃𝙾𝚁: `𝚃𝙷𝙴 𝙻𝙴𝙶𝙴𝙽𝙳 𝙳𝙲`
-➲ 𝙻𝙰𝙽𝙶𝚄𝙰𝙶𝙴: `𝙿𝚈𝚃𝙷𝙾𝙽 𝟹`
-➲ 𝙳𝙰𝚃𝙰𝙱𝙰𝚂𝙴: `𝙼𝙾𝙽𝙶𝙾 𝙳𝙱`
-➲ 𝙱𝙾𝚃 𝚂𝙴𝚁𝚅𝙴𝚁: `𝚁𝙰𝙸𝙻𝚆𝙰𝚈`
-➲ 𝚂𝚀𝙻 𝙳𝙰𝚃𝙰𝙱𝙰𝚂𝙴: `𝙴𝙻𝙴𝙿𝙷𝙰𝙽𝚃 𝚂𝚀𝙻`
-➲ 𝙱𝚄𝙸𝙻𝙳 𝚂𝚃𝙰𝚃𝚄𝚂: `v1.0` `[𝙽𝙾𝚁𝙼𝙰𝙻]`
-➲ 𝙽𝙴𝚃𝚆𝙾𝚁𝙺 : `𝚃𝙷𝙴 𝙽𝙾𝚅𝚄𝚂`
-""",
+      callbackQuery.edit_message_caption(
+"────「𝙰𝙱𝙾𝚄𝚃 𝙼𝙴 💝」────"
+"➲ 𝙼𝚈 𝙽𝙰𝙼𝙴: `𝙽𝙸𝙰 𝚂𝚄𝚉𝚄𝙽𝙴`"
+"➲ 𝙲𝚁𝙴𝙰𝚃𝙾𝚁: `𝚃𝙷𝙴 𝙻𝙴𝙶𝙴𝙽𝙳 𝙳𝙲`"
+"➲ 𝙻𝙰𝙽𝙶𝚄𝙰𝙶𝙴: `𝙿𝚈𝚃𝙷𝙾𝙽 𝟹`"
+"➲ 𝙳𝙰𝚃𝙰𝙱𝙰𝚂𝙴: `𝙼𝙾𝙽𝙶𝙾 𝙳𝙱`"
+"➲ 𝙱𝙾𝚃 𝚂𝙴𝚁𝚅𝙴𝚁: `𝚁𝙰𝙸𝙻𝚆𝙰𝚈`"
+"➲ 𝚂𝚀𝙻 𝙳𝙰𝚃𝙰𝙱𝙰𝚂𝙴: `𝙴𝙻𝙴𝙿𝙷𝙰𝙽𝚃 𝚂𝚀𝙻`
+"➲ 𝙱𝚄𝙸𝙻𝙳 𝚂𝚃𝙰𝚃𝚄𝚂: `v1.0` `[𝙽𝙾𝚁𝙼𝙰𝙻]`"
+"➲ 𝙽𝙴𝚃𝚆𝙾𝚁𝙺 : `𝚃𝙷𝙴 𝙽𝙾𝚅𝚄𝚂`"
+),
             parse_mode=ParseMode.MARKDOWN,
             disable_web_page_preview=True,
             reply_markup=InlineKeyboardMarkup(
